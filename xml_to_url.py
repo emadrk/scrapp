@@ -11,11 +11,14 @@ def get_xml_urls(soup):
     urls = [loc.string for loc in soup.find_all('loc')]
     return urls
 if __name__ == '__main__':
-    file1 = open('brainly10.txt', 'r')
-    file2 = open("brainly_cleaned.txt","a")
-    Lines = file1.readlines()
-    for line in Lines:
-        xml = f"{line}"
+    for i in range(370,381):
+        i=str(i)
+        file1 = open(f'{i}.txt', 'r')
+        file2 = open("try.txt","a")
+        Lines = file1.readline().rstrip()
+        print(Lines)
+        xml = f"{Lines}"
+        print(type(xml))
         soup = make_soup(xml)
         urls = get_xml_urls(soup)
         # loop through the urls
@@ -24,4 +27,4 @@ if __name__ == '__main__':
             file2.write("\n")
             print(url)
     file1.close()   
-    file2.close()       
+    file2.close() 
